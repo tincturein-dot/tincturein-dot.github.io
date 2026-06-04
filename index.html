@@ -1,843 +1,292 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="night">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tincture</title>
+<title>Tincture — Botanical Apparel</title>
+<meta name="description" content="Garments drawn from 19th-century botanical illustration. Archival plates, printed on cloth.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;1,6..96,300;1,6..96,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IM+Fell+DW+Pica+SC&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root[data-theme="night"]{
+    --bg:#0e0f0c;--panel:#16170f;--ink:#e9e4d4;--ink-dim:#9b9788;
+    --line:#2c2d23;--rule:#3a3b2f;--accent:#8a9a64;
+    --hatch:rgba(233,228,212,.022);--glow:rgba(138,154,100,.10);
+  }
+  :root[data-theme="day"]{
+    --bg:#e9e2cf;--panel:#e3dbc5;--ink:#1c1d14;--ink-dim:#6f6954;
+    --line:#cbc2a7;--rule:#b5ab8c;--accent:#5b6a39;
+    --hatch:rgba(28,29,20,.035);--glow:rgba(91,106,57,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'EB Garamond',Georgia,serif;font-size:19px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    transition:background-color .6s ease,color .6s ease;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+  .label{font-family:'IM Fell DW Pica SC',serif;font-size:14px;letter-spacing:.1em;color:var(--ink-dim)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 44px;position:relative;z-index:2}
+  .it{font-family:'IM Fell English',serif;font-style:italic;color:var(--accent)}
+  .divider{display:flex;align-items:center;justify-content:center;gap:18px;padding:6px 0}
+  .divider .ln{height:1px;width:90px;background:var(--rule)}
+  .divider svg{width:26px;height:26px;color:var(--accent);opacity:.8}
 
-  :root {
-    --black:    #000000;
-    --white:    #ffffff;
-    --grey-100: #f5f5f5;
-    --grey-300: #cccccc;
-    --grey-500: #888888;
-    --grey-700: #444444;
-  }
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);transition:background-color .6s,border-color .6s}
+  nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{font-family:'IM Fell English SC',serif;font-size:27px;letter-spacing:.04em}
+  .navmid{display:flex;gap:36px}
+  .navmid a{font-family:'IM Fell DW Pica SC',serif;font-size:15px;letter-spacing:.04em;color:var(--ink-dim);transition:color .25s}
+  .navmid a:hover{color:var(--ink)}
+  .toggle{display:flex;align-items:center;border:1px solid var(--rule);border-radius:40px;padding:3px;cursor:pointer;background:transparent}
+  .toggle button{border:none;background:transparent;cursor:pointer;width:32px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:30px;color:var(--ink-dim);transition:.3s}
+  .toggle button svg{width:15px;height:15px}
+  :root[data-theme="night"] .t-moon,:root[data-theme="day"] .t-sun{background:var(--accent);color:var(--bg)}
 
-  html { scroll-behavior: smooth; }
+  .hero{padding:96px 0 76px;border-bottom:1px solid var(--line)}
+  .hero-meta{display:flex;justify-content:space-between;margin-bottom:34px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:68px;align-items:center}
+  .hero h1{font-family:'IM Fell English',serif;font-size:clamp(52px,7.4vw,98px);line-height:.96;font-weight:400;letter-spacing:-.01em}
+  .hero-sub{margin-top:30px;font-size:22px;color:var(--ink-dim);max-width:31ch;line-height:1.48}
+  .hero-cta{margin-top:40px;display:inline-flex;align-items:center;gap:12px;padding:14px 28px;border:1px solid var(--rule);font-family:'IM Fell DW Pica SC',serif;font-size:15px;letter-spacing:.04em;color:var(--ink);transition:.3s}
+  .hero-cta:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .plate{position:relative;aspect-ratio:3/4;border:1px solid var(--line);background:repeating-linear-gradient(45deg,transparent,transparent 11px,var(--hatch) 11px,var(--hatch) 12px),var(--panel);display:flex;align-items:center;justify-content:center;text-align:center;transition:background-color .6s,border-color .6s;box-shadow:0 30px 60px -40px var(--glow)}
+  .plate .ph{color:var(--ink-dim);padding:30px}
+  .plate .ph b{display:block;color:var(--ink);font-family:'IM Fell DW Pica SC',serif;font-size:17px;letter-spacing:.05em;margin-bottom:10px}
+  .plate-tag{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;background:color-mix(in srgb,var(--bg) 55%,transparent)}
+  .plate-tag .label{font-size:13px}
+  .plate-tag .sci{font-family:'IM Fell English',serif;font-style:italic;letter-spacing:0;font-size:15px}
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    cursor: none;
-  }
+  .strip{border-bottom:1px solid var(--line);overflow:hidden;padding:15px 0}
+  .marquee{display:flex;white-space:nowrap;animation:slide 42s linear infinite;width:max-content}
+  .marquee span{font-family:'IM Fell English',serif;font-style:italic;font-size:18px;letter-spacing:.02em;color:var(--ink-dim);padding:0 28px}
+  .marquee span::after{content:"❧";margin-left:28px;color:var(--accent);font-style:normal}
+  @keyframes slide{to{transform:translateX(-50%)}}
 
-  /* ── CURSOR ── */
-  #cur {
-    position: fixed;
-    width: 4px; height: 4px;
-    background: var(--white);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%,-50%);
-    transition: background .2s;
-  }
-  #cur-ring {
-    position: fixed;
-    width: 28px; height: 28px;
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%,-50%);
-  }
+  .manifesto{padding:100px 0;border-bottom:1px solid var(--line)}
+  .manifesto-grid{display:grid;grid-template-columns:200px 1fr;gap:62px}
+  .manifesto .label{padding-top:14px}
+  .manifesto h2{font-family:'IM Fell English',serif;font-size:clamp(34px,4.6vw,56px);line-height:1.06;font-weight:400;max-width:17ch;letter-spacing:-.005em}
+  .manifesto p{margin-top:32px;font-size:21px;color:var(--ink-dim);max-width:54ch;line-height:1.55}
+  .manifesto p+p{margin-top:18px}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    inset: 0 0 auto 0;
-    z-index: 200;
-    padding: 40px 64px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    mix-blend-mode: difference;
-  }
-  .logo {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 400;
-    font-size: 14px;
-    letter-spacing: 0.45em;
-    color: var(--white);
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  .nav-links {
-    display: flex;
-    gap: 48px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 10px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-decoration: none;
-    transition: opacity .3s;
-  }
-  .nav-links a:hover { opacity: 0.5; }
+  .specimens{padding:94px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:50px;border-bottom:1px solid var(--rule);padding-bottom:20px}
+  .sec-head h2{font-family:'IM Fell English',serif;font-size:38px;font-weight:400}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .card{background:var(--bg);transition:background-color .6s}
+  .card .img{aspect-ratio:4/5;border-bottom:1px solid var(--line);background:repeating-linear-gradient(45deg,transparent,transparent 11px,var(--hatch) 11px,var(--hatch) 12px),var(--panel);display:flex;align-items:center;justify-content:center;position:relative;transition:filter .5s,background-color .6s}
+  .card .img .ph{color:var(--ink-dim);font-family:'IM Fell DW Pica SC',serif;font-size:13px;letter-spacing:.05em;text-align:center;padding:20px}
+  .card:hover .img{filter:brightness(1.08)}
+  .badge{position:absolute;top:15px;left:15px;font-family:'IM Fell DW Pica SC',serif;font-size:12px;letter-spacing:.04em;color:var(--accent);border:1px solid var(--rule);padding:3px 9px}
+  .card .body{padding:24px 24px 28px}
+  .card .latin{font-family:'IM Fell English',serif;font-style:italic;color:var(--ink-dim);font-size:17px;margin-bottom:3px}
+  .card .name{font-family:'IM Fell English',serif;font-size:28px;font-weight:400;line-height:1.08}
+  .card .prov{margin-top:16px;font-family:'IM Fell DW Pica SC',serif;font-size:13px;letter-spacing:.02em;color:var(--ink-dim);line-height:1.7;border-top:1px solid var(--line);padding-top:13px}
+  .card .row{margin-top:18px;display:flex;align-items:center;justify-content:space-between}
+  .card .price{font-size:23px}
+  .card .order{font-family:'IM Fell DW Pica SC',serif;font-size:14px;letter-spacing:.04em;color:var(--accent);border-bottom:1px solid transparent;transition:.2s}
+  .card:hover .order{border-bottom-color:var(--accent)}
 
-  /* ── HERO ── */
-  .hero {
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-img {
-    position: absolute;
-    inset: 0;
-    background:
-      url('https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1800&q=90&fit=crop')
-      center 30% / cover no-repeat;
-    transform: scale(1.05);
-    animation: zoomIn 16s ease forwards;
-    filter: brightness(0.45) contrast(1.15) grayscale(1);
-  }
-  .hero-img::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 45%,
-      rgba(0,0,0,0.5) 75%,
-      rgba(0,0,0,1) 100%
-    );
-  }
-  .hero-content {
-    position: absolute;
-    bottom: 96px;
-    left: 64px;
-    z-index: 2;
-  }
-  .hero-label {
-    display: block;
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 9px;
-    letter-spacing: 0.6em;
-    text-transform: uppercase;
-    color: var(--grey-300);
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: up .7s .2s forwards;
-  }
-  .hero-title {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 300;
-    font-size: clamp(80px, 11vw, 160px);
-    line-height: 0.88;
-    letter-spacing: -0.02em;
-    color: var(--white);
-    opacity: 0;
-    animation: up 1s .4s forwards;
-  }
-  .hero-title em {
-    display: block;
-    font-style: italic;
-    font-size: 0.62em;
-    color: var(--grey-300);
-    letter-spacing: 0.02em;
-    padding-left: 0.1em;
-    margin-top: 12px;
-  }
-  .hero-body {
-    max-width: 380px;
-    margin-top: 40px;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--grey-500);
-    opacity: 0;
-    animation: up .7s .75s forwards;
-  }
-  .hero-link {
-    display: inline-block;
-    margin-top: 40px;
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 9px;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    padding-bottom: 5px;
-    opacity: 0;
-    animation: up .7s 1s forwards;
-    transition: opacity .3s;
-  }
-  .hero-link:hover { opacity: 0.5; }
-  .hero-counter {
-    position: absolute;
-    right: 64px;
-    bottom: 96px;
-    z-index: 2;
-    font-family: 'Bodoni Moda', serif;
-    font-style: italic;
-    font-size: 11px;
-    color: var(--grey-700);
-    letter-spacing: 0.1em;
-    opacity: 0;
-    animation: fadeIn .8s 1.3s forwards;
-  }
+  .note{padding:96px 0;border-bottom:1px solid var(--line)}
+  .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:66px;align-items:center}
+  .note blockquote{font-family:'IM Fell English',serif;font-size:clamp(26px,3.4vw,40px);font-style:italic;line-height:1.28;font-weight:400}
+  .note cite{display:block;margin-top:24px;font-style:normal}
+  .ledger{border:1px solid var(--line)}
+  .ledger div{display:flex;justify-content:space-between;padding:17px 24px;border-bottom:1px solid var(--line)}
+  .ledger div:last-child{border-bottom:none}
+  .ledger .k{font-family:'IM Fell DW Pica SC',serif;font-size:14px;letter-spacing:.03em;color:var(--ink-dim)}
+  .ledger .v{font-family:'IM Fell English',serif;font-size:18px;color:var(--ink)}
 
-  /* ── TICKER ── */
-  .ticker {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 12px 0;
-    overflow: hidden;
-    background: var(--black);
-  }
-  .ticker-track {
-    display: flex;
-    animation: ticker 30s linear infinite;
-    white-space: nowrap;
-  }
-  .ticker-item {
-    font-family: 'Bodoni Moda', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: var(--grey-700);
-    padding: 0 56px;
-  }
+  footer{padding:94px 0 52px}
+  .foot-top{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;padding-bottom:64px;border-bottom:1px solid var(--line)}
+  .foot-top h2{font-family:'IM Fell English',serif;font-size:clamp(30px,3.8vw,46px);font-weight:400;line-height:1.08}
+  .foot-top p{margin-top:20px;color:var(--ink-dim);max-width:36ch}
+  .ig{margin-top:32px;display:inline-flex;align-items:center;gap:12px;padding:15px 30px;background:var(--ink);color:var(--bg);font-family:'IM Fell DW Pica SC',serif;font-size:15px;letter-spacing:.04em;transition:.3s}
+  .ig:hover{background:var(--accent)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:42px}
+  .foot-bottom .label{font-size:13px}
+  .foot-links{display:flex;gap:28px}
 
-  /* ── STATEMENT ── */
-  .statement {
-    padding: 180px 64px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 80px;
-    align-items: start;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .statement-num {
-    font-family: 'Bodoni Moda', serif;
-    font-style: italic;
-    font-size: 11px;
-    color: var(--grey-700);
-    letter-spacing: 0.1em;
-    padding-top: 6px;
-  }
-  .statement-body h2 {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 300;
-    font-size: clamp(40px, 5vw, 72px);
-    line-height: 1.08;
-    letter-spacing: -0.01em;
-    color: var(--white);
-    margin-bottom: 48px;
-  }
-  .statement-body h2 em {
-    font-style: italic;
-    color: var(--grey-500);
-  }
-  .statement-body p {
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 2;
-    color: var(--grey-500);
-    max-width: 520px;
-    margin-bottom: 20px;
-  }
-  .link {
-    display: inline-block;
-    margin-top: 24px;
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 9px;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 4px;
-    transition: opacity .3s;
-  }
-  .link:hover { opacity: 0.5; }
+  .reveal{opacity:0;transform:translateY(18px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}.d4{animation-delay:.44s}
+  @media(prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}}
 
-  /* ── SPLIT ── */
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .split-img {
-    aspect-ratio: 3/4;
-    overflow: hidden;
-  }
-  .split-img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(1) brightness(0.7) contrast(1.1);
-    transition: transform 1.2s ease, filter 1.2s ease;
-  }
-  .split-img:hover img {
-    transform: scale(1.04);
-    filter: grayscale(1) brightness(0.85) contrast(1.1);
-  }
-  .split-text {
-    background: var(--black);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 72px;
-    border-left: 1px solid rgba(255,255,255,0.06);
-  }
-  .split-label {
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 9px;
-    letter-spacing: 0.55em;
-    text-transform: uppercase;
-    color: var(--grey-700);
-    margin-bottom: 40px;
-  }
-  .split-text h2 {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 300;
-    font-size: clamp(36px, 3.5vw, 56px);
-    line-height: 1.1;
-    color: var(--white);
-    margin-bottom: 36px;
-  }
-  .split-text h2 em { font-style: italic; color: var(--grey-500); }
-  .split-text p {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 2;
-    color: var(--grey-500);
-    margin-bottom: 16px;
-    max-width: 400px;
-  }
-
-  /* ── COLLECTION ── */
-  .collection {
-    padding: 0 64px 180px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .col-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 80px 0 64px;
-  }
-  .col-header h2 {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 300;
-    font-size: clamp(36px, 4vw, 56px);
-    line-height: 1;
-    color: var(--white);
-  }
-  .col-header h2 em { font-style: italic; color: var(--grey-500); }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-  .card {
-    position: relative;
-    overflow: hidden;
-    cursor: none;
-  }
-  .card-img {
-    aspect-ratio: 2/3;
-    overflow: hidden;
-    position: relative;
-  }
-  .card-img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(1) brightness(0.65) contrast(1.1);
-    transition: transform 1s ease, filter 1s ease;
-  }
-  .card:hover .card-img img {
-    transform: scale(1.04);
-    filter: grayscale(1) brightness(0.8) contrast(1.1);
-  }
-  .card-img::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
-  }
-  .card-info {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 24px 28px 32px;
-    z-index: 2;
-  }
-  .card-name {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 300;
-    font-size: 22px;
-    color: var(--white);
-    display: block;
-    margin-bottom: 8px;
-  }
-  .card-name em { font-style: italic; }
-  .card-price {
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: var(--grey-500);
-  }
-  .card-badge {
-    position: absolute;
-    top: 20px; left: 20px;
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 7px;
-    letter-spacing: 0.45em;
-    text-transform: uppercase;
-    color: var(--white);
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 5px 10px;
-    z-index: 3;
-    background: rgba(0,0,0,0.5);
-  }
-
-  /* ── QUOTE ── */
-  .quote {
-    padding: 180px 64px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .quote blockquote {
-    font-family: 'Bodoni Moda', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: clamp(32px, 4.5vw, 62px);
-    line-height: 1.2;
-    color: var(--white);
-    max-width: 860px;
-    margin-bottom: 48px;
-    letter-spacing: -0.01em;
-  }
-  .quote cite {
-    font-family: 'Jost', sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    font-size: 9px;
-    letter-spacing: 0.55em;
-    text-transform: uppercase;
-    color: var(--grey-700);
-  }
-
-  /* ── LOOKBOOK ── */
-  .lookbook {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 600px;
-    gap: 2px;
-  }
-  .look {
-    position: relative;
-    overflow: hidden;
-    cursor: none;
-  }
-  .look img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(1) brightness(0.6) contrast(1.15);
-    transition: transform 1.2s ease, filter 1.2s ease;
-  }
-  .look:hover img {
-    transform: scale(1.05);
-    filter: grayscale(1) brightness(0.75) contrast(1.15);
-  }
-  .look::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%);
-  }
-  .look-cap {
-    position: absolute;
-    bottom: 32px; left: 32px;
-    z-index: 2;
-  }
-  .look-cap span {
-    font-family: 'Bodoni Moda', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 22px;
-    color: var(--white);
-    display: block;
-    margin-bottom: 8px;
-  }
-  .look-cap small {
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 8px;
-    letter-spacing: 0.45em;
-    text-transform: uppercase;
-    color: var(--grey-500);
-  }
-
-  /* ── NEWSLETTER ── */
-  .newsletter {
-    padding: 180px 64px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 120px;
-    align-items: center;
-  }
-  .newsletter h2 {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 300;
-    font-size: clamp(38px, 4.5vw, 60px);
-    line-height: 1.1;
-    color: var(--white);
-    margin-bottom: 20px;
-  }
-  .newsletter h2 em { font-style: italic; color: var(--grey-500); }
-  .newsletter p {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--grey-500);
-  }
-  .nl-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-  }
-  .nl-row {
-    display: flex;
-    align-items: center;
-  }
-  .nl-form input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 18px 0;
-    font-family: 'Bodoni Moda', serif;
-    font-style: italic;
-    font-size: 16px;
-    color: var(--white);
-  }
-  .nl-form input::placeholder { color: var(--grey-700); }
-  .nl-form button {
-    background: transparent;
-    border: none;
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 9px;
-    letter-spacing: 0.45em;
-    text-transform: uppercase;
-    color: var(--grey-500);
-    cursor: none;
-    padding: 18px 0 18px 20px;
-    transition: color .3s;
-    white-space: nowrap;
-  }
-  .nl-form button:hover { color: var(--white); }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 64px 64px 48px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-  .foot-left .foot-logo {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 400;
-    font-size: 15px;
-    letter-spacing: 0.45em;
-    color: var(--white);
-    display: block;
-    margin-bottom: 14px;
-  }
-  .foot-left p {
-    font-size: 12px;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--grey-700);
-    line-height: 1.7;
-    font-family: 'Bodoni Moda', serif;
-  }
-  .foot-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
-  .foot-links a {
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 9px;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--grey-700);
-    text-decoration: none;
-    transition: color .3s;
-  }
-  .foot-links a:hover { color: var(--white); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes zoomIn {
-    from { transform: scale(1.05); }
-    to   { transform: scale(1);    }
-  }
-  @keyframes up {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0);    }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1.1s ease, transform 1.1s ease;
-  }
-  .reveal.on { opacity: 1; transform: translateY(0); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 28px 24px; }
-    .nav-links { gap: 24px; }
-    .hero-content { left: 24px; bottom: 72px; }
-    .hero-counter { display: none; }
-    .statement { grid-template-columns: 1fr; gap: 32px; padding: 80px 24px; }
-    .split { grid-template-columns: 1fr; }
-    .split-text { padding: 48px 24px; border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
-    .collection { padding: 0 24px 80px; }
-    .grid { grid-template-columns: 1fr 1fr; }
-    .quote { padding: 80px 24px; }
-    .lookbook { grid-template-columns: 1fr; grid-template-rows: auto; }
-    .look { height: 70vw; }
-    .newsletter { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
-    footer { flex-direction: column; gap: 36px; align-items: flex-start; padding: 48px 24px; }
+  @media(max-width:860px){
+    .wrap{padding:0 24px}
+    .navmid{display:none}
+    .hero-grid,.manifesto-grid,.note-grid,.foot-top{grid-template-columns:1fr;gap:42px}
+    .manifesto-grid{gap:26px}
+    .grid{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-ring"></div>
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo">Tincture</div>
+      <div class="navmid">
+        <a href="#specimens">specimens</a>
+        <a href="#provenance">provenance</a>
+        <a href="#order">order</a>
+      </div>
+      <div class="toggle" id="toggle" role="button" aria-label="Toggle day or night">
+        <button class="t-sun" aria-label="Day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg></button>
+        <button class="t-moon" aria-label="Night"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button>
+      </div>
+    </nav>
+  </div>
+</header>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="logo">Tincture</a>
-  <ul class="nav-links">
-    <li><a href="#">Shop</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Lookbook</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-img"></div>
-  <div class="hero-content">
-    <span class="hero-label">Dark Botanical Apparel — Est. 2024</span>
-    <h1 class="hero-title">
-      Tincture
-      <em>of Nightshade</em>
-    </h1>
-    <p class="hero-body">Garments pressed from the poisonous garden. For women who understand that beauty and darkness were never opposites.</p>
-    <a href="#" class="hero-link">Enter the collection</a>
+  <div class="wrap">
+    <div class="hero-meta label reveal d1">
+      <span>botanical apparel</span>
+      <span>himachal pradesh · in</span>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <h1 class="reveal d2">Plates,<br>printed on <span class="it">cloth.</span></h1>
+        <p class="hero-sub reveal d3">Garments drawn from 19th-century botanical illustration. Every design is a real archival plate — sourced, not styled.</p>
+        <a href="#specimens" class="hero-cta reveal d4">view the specimens →</a>
+      </div>
+      <!-- PLACEHOLDER HERO: replace with <div class="plate reveal d3"><img src="images/hero.jpg" style="width:100%;height:100%;object-fit:cover"></div> · 3:4 portrait -->
+      <div class="plate reveal d3">
+        <div class="ph"><b>hero plate</b>drop image here · 3:4 portrait</div>
+        <div class="plate-tag">
+          <span class="label">fig. 001</span>
+          <span class="label sci">Digitalis purpurea</span>
+        </div>
+      </div>
+    </div>
   </div>
-  <span class="hero-counter">001 / 003</span>
 </section>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item">Atropa Belladonna &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Conium Maculatum &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Digitalis Purpurea &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Datura Stramonium &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Solanum Nigrum &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Veratrum Album &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Atropa Belladonna &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Conium Maculatum &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Digitalis Purpurea &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Datura Stramonium &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Solanum Nigrum &nbsp;&nbsp;—&nbsp;&nbsp;</span>
-    <span class="ticker-item">Veratrum Album &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+<div class="strip">
+  <div class="marquee">
+    <span>Atropa belladonna</span><span>Conium maculatum</span><span>Digitalis purpurea</span><span>Datura stramonium</span><span>Aconitum napellus</span><span>Veratrum album</span><span>Atropa belladonna</span><span>Conium maculatum</span><span>Digitalis purpurea</span><span>Datura stramonium</span><span>Aconitum napellus</span><span>Veratrum album</span>
   </div>
 </div>
 
-<!-- STATEMENT -->
-<section class="statement">
-  <div class="statement-num reveal">I.</div>
-  <div class="statement-body reveal">
-    <h2>Not fashion.<br><em>An apothecary<br>of the self.</em></h2>
-    <p>Each design is drawn from the botanical world's most misunderstood specimens — plants that healed and killed, that adorned altars and witch trials with equal grace.</p>
-    <p>Worn on skin, they become a quiet declaration.</p>
-    <a href="#" class="link">Read the codex</a>
-  </div>
-</section>
-
-<!-- SPLIT -->
-<div class="split">
-  <div class="split-img reveal">
-    <img src="https://images.unsplash.com/photo-1416339684178-3a239570f315?w=900&q=85&fit=crop" alt="Botanical">
-  </div>
-  <div class="split-text reveal">
-    <span class="split-label">The Provenance</span>
-    <h2>Drawn from the<br><em>poisonous garden</em></h2>
-    <p>Every plant in our garden was once worn by women who knew things they were not supposed to know.</p>
-    <p>We press their silhouettes onto cloth and call it a collection.</p>
-    <a href="#" class="link">Our story</a>
-  </div>
-</div>
-
-<!-- COLLECTION -->
-<section class="collection">
-  <div class="col-header reveal">
-    <h2>The Apothecary<br><em>Current Season</em></h2>
-    <a href="#" class="link">View all</a>
-  </div>
-  <div class="grid">
-    <div class="card reveal">
-      <div class="card-img">
-        <span class="card-badge">New</span>
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&fit=crop" alt="Belladonna Tee">
-      </div>
-      <div class="card-info">
-        <span class="card-name">Belladonna <em>Tee</em></span>
-        <span class="card-price">₹ 1,490</span>
-      </div>
-    </div>
-    <div class="card reveal">
-      <div class="card-img">
-        <span class="card-badge">Bestseller</span>
-        <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=700&q=80&fit=crop" alt="Hemlock Oversized">
-      </div>
-      <div class="card-info">
-        <span class="card-name">Hemlock <em>Oversized</em></span>
-        <span class="card-price">₹ 1,690</span>
-      </div>
-    </div>
-    <div class="card reveal">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=700&q=80&fit=crop" alt="Foxglove Drop">
-      </div>
-      <div class="card-info">
-        <span class="card-name">Foxglove <em>Drop Tee</em></span>
-        <span class="card-price">₹ 1,590</span>
+<section class="manifesto">
+  <div class="wrap">
+    <div class="manifesto-grid">
+      <div class="label">i — the premise</div>
+      <div>
+        <h2>What happens when an <span class="it">archivist</span> makes a t-shirt brand.</h2>
+        <p>Tincture takes botanical plates from the Biodiversity Heritage Library, Köhler's Medizinal-Pflanzen, and Schott's Icones Aroidearum, and prints them — faithfully — onto cloth.</p>
+        <p>No interpretation, no softening. The illustrations were made by people who studied these plants with precision and a degree of obsession. We keep that intact.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- QUOTE -->
-<section class="quote">
-  <blockquote class="reveal">
-    "Beauty is not the absence of danger.<br>It is what persists in spite of it."
-  </blockquote>
-  <cite class="reveal">— Tincture, Brand Codex</cite>
+<div class="divider"><span class="ln"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2c0 6-5 8-5 13a5 5 0 0010 0c0-5-5-7-5-13z"/></svg><span class="ln"></span></div>
+
+<section class="specimens" id="specimens">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The Specimens</h2>
+      <span class="label">current — 003</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <!-- PLACEHOLDER: <img src="images/belladonna.jpg"> 4:5 -->
+        <div class="img"><span class="badge">new</span><div class="ph">image · 4:5</div></div>
+        <div class="body">
+          <div class="latin">Atropa belladonna</div>
+          <div class="name">Belladonna Tee</div>
+          <div class="prov">source — köhler's<br>medizinal-pflanzen, 1887<br>240 gsm · combed cotton</div>
+          <div class="row"><span class="price">₹1,490</span><a href="#order" class="order">order →</a></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="img"><span class="badge">bestseller</span><div class="ph">image · 4:5</div></div>
+        <div class="body">
+          <div class="latin">Conium maculatum</div>
+          <div class="name">Hemlock Oversized</div>
+          <div class="prov">source — köhler's<br>medizinal-pflanzen, 1887<br>240 gsm · oversized cut</div>
+          <div class="row"><span class="price">₹1,690</span><a href="#order" class="order">order →</a></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="img"><div class="ph">image · 4:5</div></div>
+        <div class="body">
+          <div class="latin">Digitalis purpurea</div>
+          <div class="name">Foxglove Drop Tee</div>
+          <div class="prov">source — biodiversity<br>heritage library<br>180 gsm · relaxed fit</div>
+          <div class="row"><span class="price">₹1,590</span><a href="#order" class="order">order →</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
 
-<!-- LOOKBOOK -->
-<div class="lookbook">
-  <div class="look reveal">
-    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1000&q=85&fit=crop" alt="Lookbook 1">
-    <div class="look-cap">
-      <span>Nightshade Season</span>
-      <small>Collection I — 2024</small>
-    </div>
-  </div>
-  <div class="look reveal">
-    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700&q=85&fit=crop" alt="Lookbook 2">
-    <div class="look-cap">
-      <span>The Garden</span>
-      <small>Editorial</small>
-    </div>
-  </div>
-  <div class="look reveal">
-    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=700&q=85&fit=crop" alt="Lookbook 3">
-    <div class="look-cap">
-      <span>Poison & Remedy</span>
-      <small>Autumn 2024</small>
-    </div>
-  </div>
-</div>
-
-<!-- NEWSLETTER -->
-<section class="newsletter">
-  <div class="reveal">
-    <h2>Enter the<br><em>inner garden</em></h2>
-    <p>New specimens, botanical lore, and early access to limited drops.</p>
-  </div>
-  <div class="reveal">
-    <div class="nl-form">
-      <div class="nl-row">
-        <input type="email" placeholder="Your email address">
-        <button type="button">Subscribe</button>
+<section class="note" id="provenance">
+  <div class="wrap">
+    <div class="note-grid">
+      <div>
+        <blockquote>“Solanum somniferum hortense — the sleeping nightshade of the garden.”</blockquote>
+        <cite class="label">inscription · herbal woodcut, 16th c.</cite>
+      </div>
+      <div class="ledger">
+        <div><span class="k">source</span><span class="v">archival plate</span></div>
+        <div><span class="k">printing</span><span class="v">DTF · Delhi</span></div>
+        <div><span class="k">fabric</span><span class="v">180 / 240 gsm</span></div>
+        <div><span class="k">edition</span><span class="v">open · made to order</span></div>
+        <div><span class="k">origin</span><span class="v">made in India</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="foot-left">
-    <span class="foot-logo">Tincture</span>
-    <p>Drawn from the poisonous garden.<br>© 2024 Tincture. All rights reserved.</p>
+<footer id="order">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h2>Ordered through <span class="it">Instagram</span>, for now.</h2>
+        <p>No checkout yet. Message us the specimen and your size — pieces are made to order and shipped across India.</p>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="ig">@tincture →</a>
+      </div>
+      <div class="ledger">
+        <div><span class="k">enquiries</span><span class="v">hello@tincture.co.in</span></div>
+        <div><span class="k">stockists</span><span class="v">select cafés, soon</span></div>
+        <div><span class="k">shipping</span><span class="v">pan-india</span></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="label">© 2026 tincture — plates, printed on cloth</span>
+      <div class="foot-links">
+        <a href="https://instagram.com/" class="label">instagram</a>
+        <a href="#specimens" class="label">specimens</a>
+        <a href="mailto:hello@tincture.co.in" class="label">contact</a>
+      </div>
+    </div>
   </div>
-  <ul class="foot-links">
-    <li><a href="#">Shop</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Lookbook</a></li>
-    <li><a href="#">Instagram</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
 </footer>
 
 <script>
-  // Cursor
-  const cur = document.getElementById('cur');
-  const ring = document.getElementById('cur-ring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
-  (function tick(){
-    cur.style.left=mx+'px'; cur.style.top=my+'px';
-    rx+=(mx-rx)*0.1; ry+=(my-ry)*0.1;
-    ring.style.left=rx+'px'; ring.style.top=ry+'px';
-    requestAnimationFrame(tick);
+  (function(){
+    var root=document.documentElement, t=document.getElementById('toggle');
+    try{var s=localStorage.getItem('tincture-theme'); if(s) root.setAttribute('data-theme',s);}catch(e){}
+    t.addEventListener('click',function(){
+      var next=root.getAttribute('data-theme')==='night'?'day':'night';
+      root.setAttribute('data-theme',next);
+      try{localStorage.setItem('tincture-theme',next);}catch(e){}
+    });
   })();
-
-  // Scroll reveal
-  document.querySelectorAll('.reveal').forEach(el =>
-    new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) el.classList.add('on');
-    }, { threshold: 0.1 }).observe(el)
-  );
 </script>
+
 </body>
 </html>
