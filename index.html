@@ -287,6 +287,60 @@
     });
   })();
 </script>
+<!-- tincture loader + entrance — paste directly after the <body> tag -->
+<div id="tincture-loader"><div class="tl-mark">tincture</div></div>
+<style>
+  /* loader */
+  #tincture-loader{
+    position:fixed;inset:0;z-index:9999;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bg,#0e0f0c);transition:opacity .8s ease;
+  }
+  #tincture-loader.tl-hide{opacity:0;pointer-events:none;}
+  .tl-mark{
+    color:var(--ink,#e9e2cf);font-family:Georgia,'Times New Roman',serif;
+    font-size:clamp(1.4rem,4vw,2.2rem);letter-spacing:.35em;
+    text-transform:lowercase;padding-left:.35em;position:relative;opacity:0;
+    animation:tl-fade 1.6s ease forwards, tl-pulse 2.4s ease-in-out .8s infinite;
+  }
+  .tl-mark::after{
+    content:"";position:absolute;left:0;right:0;bottom:-.5em;height:1px;
+    background:var(--accent,#4A7C2F);transform:scaleX(0);transform-origin:left;
+    animation:tl-draw 1.4s ease .3s forwards;
+  }
+  @keyframes tl-fade{to{opacity:1}}
+  @keyframes tl-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+  @keyframes tl-draw{to{transform:scaleX(1)}}
+
+  /* entrance — content rises in once the loader clears */
+  body.tl-init > *:not(#tincture-loader){opacity:0;transform:translateY(14px)}
+  body.tl-ready > *:not(#tincture-loader){
+    opacity:1;transform:none;transition:opacity .9s ease, transform .9s ease;
+  }
+  body.tl-ready > *:nth-child(2){transition-delay:.05s}
+  body.tl-ready > *:nth-child(3){transition-delay:.15s}
+  body.tl-ready > *:nth-child(4){transition-delay:.25s}
+  body.tl-ready > *:nth-child(5){transition-delay:.35s}
+  @media (prefers-reduced-motion:reduce){
+    body.tl-init > *:not(#tincture-loader){opacity:1;transform:none}
+    .tl-mark{animation:none;opacity:1}
+  }
+</style>
+<script>
+  (function(){
+    document.body.classList.add('tl-init');
+    var el=document.getElementById('tincture-loader'),start=Date.now(),min=1400;
+    function reveal(){
+      var wait=Math.max(0,min-(Date.now()-start));
+      setTimeout(function(){
+        el.classList.add('tl-hide');
+        document.body.classList.add('tl-ready');
+        setTimeout(function(){el.style.display='none'},800);
+      },wait);
+    }
+    if(document.readyState==='complete')reveal();else window.addEventListener('load',reveal);
+  })();
+</script>
 
 </body>
 </html>
