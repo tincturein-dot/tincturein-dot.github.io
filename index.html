@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tincture — Botanical Apparel</title>
-<meta name="description" content="Garments drawn from 19th-century botanical illustration. Archival plates, printed on cloth.">
+<meta name="description" content="Archival botanical plates, printed on cloth.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -99,12 +99,8 @@
   .card .price{font-size:23px}
   .card .order{font-family:'Jost',sans-serif;font-size:14px;letter-spacing:.04em;color:var(--accent);border-bottom:1px solid transparent;transition:.2s}
   .card:hover .order{border-bottom-color:var(--accent)}
-  .card .prov{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.02em;color:var(--ink-dim);line-height:1.7;max-height:0;opacity:0;overflow:hidden;transition:max-height .55s cubic-bezier(.2,.7,.2,1),opacity .4s ease,margin .4s,padding .4s}
-  @media(hover:hover){.card:hover .prov{max-height:140px;opacity:1;margin-top:15px;padding-top:13px;border-top:1px solid var(--line)}}
-  @media(hover:none){.card .prov{max-height:none;opacity:1;margin-top:15px;padding-top:13px;border-top:1px solid var(--line)}}
 
   .note{padding:96px 0;border-bottom:1px solid var(--line)}
-  .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:66px;align-items:center}
   .note blockquote{font-family:'Jost',sans-serif;font-size:clamp(26px,3.4vw,40px);font-style:italic;line-height:1.28;font-weight:400}
   .note cite{display:block;margin-top:24px;font-style:normal}
   .ledger{border:1px solid var(--line)}
@@ -131,7 +127,7 @@
   @media(max-width:860px){
     .wrap{padding:0 24px}
     .navmid{display:none}
-    .hero-grid,.manifesto-grid,.note-grid,.foot-top{grid-template-columns:1fr;gap:42px}
+    .hero-grid,.manifesto-grid,.foot-top{grid-template-columns:1fr;gap:42px}
     .manifesto-grid{gap:26px}
     .grid{grid-template-columns:1fr;gap:44px}
     .card:nth-child(2){margin-top:0}
@@ -151,6 +147,7 @@
   .card .latin{font-style:italic;text-transform:none}
   .badge{text-transform:uppercase;letter-spacing:.1em}
   .plate-tag .sci{font-style:normal}
+  .note-quote{max-width:640px;margin:0 auto;text-align:center}
 </style>
 </head>
 <body>
@@ -177,12 +174,12 @@
   <div class="wrap">
     <div class="hero-meta label reveal d1">
       <span>botanical apparel</span>
-      <span>himachal pradesh · in</span>
+      <span>drop 01 — poison garden</span>
     </div>
     <div class="hero-grid">
       <div>
         <h1 class="reveal d2">Plates,<br>printed on <span class="it">cloth.</span></h1>
-        <p class="hero-sub reveal d3">Garments drawn from 19th-century botanical illustration. Every design is a real archival plate — sourced, not styled.</p>
+        <p class="hero-sub reveal d3">the most beautiful things in the garden were always the ones that could kill you. we print them the way the old herbals drew them — exact, and unsoftened.</p>
         <a href="#specimens" class="hero-cta reveal d4">view the specimens →</a>
       </div>
       <!-- PLACEHOLDER HERO: replace with <div class="plate reveal d3"><img src="images/hero.jpg" style="width:100%;height:100%;object-fit:cover"></div> · 3:4 portrait -->
@@ -208,9 +205,9 @@
     <div class="manifesto-grid">
       <div class="label">i — the premise</div>
       <div>
-        <h2>What happens when an <span class="it">archivist</span> makes a t-shirt brand.</h2>
-        <p>Tincture takes botanical plates from the Biodiversity Heritage Library, Köhler's Medizinal-Pflanzen, and Schott's Icones Aroidearum, and prints them — faithfully — onto cloth.</p>
-        <p>No interpretation, no softening. The illustrations were made by people who studied these plants with precision and a degree of obsession. We keep that intact.</p>
+        <h2>We don't design these prints. We <span class="it">recover</span> them.</h2>
+        <p>Each plant here was drawn from life centuries ago, by people who studied it with precision and a kind of obsession — to heal with, or to keep well clear of.</p>
+        <p>We recover those plates from the archive and print them, faithfully, onto cloth. Nothing redrawn. Nothing softened.</p>
       </div>
     </div>
   </div>
@@ -232,7 +229,6 @@
           <div class="latin">Atropa belladonna</div>
           <div class="name">Belladonna Tee</div>
           <div class="row"><span class="price">₹1,490</span><a href="#order" class="order">order →</a></div>
-          <div class="prov">source — köhler's<br>medizinal-pflanzen, 1887<br>240 gsm · combed cotton</div>
         </div>
       </article>
       <article class="card">
@@ -241,7 +237,6 @@
           <div class="latin">Conium maculatum</div>
           <div class="name">Hemlock Oversized</div>
           <div class="row"><span class="price">₹1,690</span><a href="#order" class="order">order →</a></div>
-          <div class="prov">source — köhler's<br>medizinal-pflanzen, 1887<br>240 gsm · oversized cut</div>
         </div>
       </article>
       <article class="card">
@@ -250,7 +245,6 @@
           <div class="latin">Digitalis purpurea</div>
           <div class="name">Foxglove Drop Tee</div>
           <div class="row"><span class="price">₹1,590</span><a href="#order" class="order">order →</a></div>
-          <div class="prov">source — biodiversity<br>heritage library<br>180 gsm · relaxed fit</div>
         </div>
       </article>
     </div>
@@ -259,18 +253,9 @@
 
 <section class="note" id="provenance">
   <div class="wrap">
-    <div class="note-grid">
-      <div>
-        <blockquote>“Solanum somniferum hortense — the sleeping nightshade of the garden.”</blockquote>
-        <cite class="label">inscription · herbal woodcut, 16th c.</cite>
-      </div>
-      <div class="ledger">
-        <div><span class="k">source</span><span class="v">archival plate</span></div>
-        <div><span class="k">printing</span><span class="v">DTF · Delhi</span></div>
-        <div><span class="k">fabric</span><span class="v">180 / 240 gsm</span></div>
-        <div><span class="k">edition</span><span class="v">open · made to order</span></div>
-        <div><span class="k">origin</span><span class="v">made in India</span></div>
-      </div>
+    <div class="note-quote">
+      <blockquote>“Solanum somniferum hortense — the sleeping nightshade of the garden.”</blockquote>
+      <cite class="label">inscription · herbal woodcut, 16th c.</cite>
     </div>
   </div>
 </section>
@@ -285,7 +270,6 @@
       </div>
       <div class="ledger">
         <div><span class="k">enquiries</span><span class="v">hello@tincture.co.in</span></div>
-        <div><span class="k">stockists</span><span class="v">select cafés, soon</span></div>
         <div><span class="k">shipping</span><span class="v">pan-india</span></div>
       </div>
     </div>
@@ -320,44 +304,22 @@
     window.addEventListener('scroll',upd,{passive:true}); upd();
   })();
 </script>
-<!-- tincture loader + entrance — paste directly after the <body> tag -->
 <div id="tincture-loader"><div class="tl-mark">tincture</div></div>
 <style>
-  /* loader */
-  #tincture-loader{
-    position:fixed;inset:0;z-index:9999;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--bg,#0e0f0c);transition:opacity .8s ease;
-  }
+  #tincture-loader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--bg,#0e0f0c);transition:opacity .8s ease;}
   #tincture-loader.tl-hide{opacity:0;pointer-events:none;}
-  .tl-mark{
-    color:var(--ink,#e9e2cf);font-family:'Cormorant Garamond',Georgia,serif;
-    font-size:clamp(1.4rem,4vw,2.2rem);letter-spacing:.35em;
-    text-transform:lowercase;padding-left:.35em;position:relative;opacity:0;
-    animation:tl-fade 1.6s ease forwards, tl-pulse 2.4s ease-in-out .8s infinite;
-  }
-  .tl-mark::after{
-    content:"";position:absolute;left:0;right:0;bottom:-.5em;height:1px;
-    background:var(--accent,#4A7C2F);transform:scaleX(0);transform-origin:left;
-    animation:tl-draw 1.4s ease .3s forwards;
-  }
+  .tl-mark{color:var(--ink,#e9e2cf);font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.4rem,4vw,2.2rem);letter-spacing:.35em;text-transform:lowercase;padding-left:.35em;position:relative;opacity:0;animation:tl-fade 1.6s ease forwards, tl-pulse 2.4s ease-in-out .8s infinite;}
+  .tl-mark::after{content:"";position:absolute;left:0;right:0;bottom:-.5em;height:1px;background:var(--accent,#4A7C2F);transform:scaleX(0);transform-origin:left;animation:tl-draw 1.4s ease .3s forwards;}
   @keyframes tl-fade{to{opacity:1}}
   @keyframes tl-pulse{0%,100%{opacity:1}50%{opacity:.55}}
   @keyframes tl-draw{to{transform:scaleX(1)}}
-
-  /* entrance — content rises in once the loader clears */
   body.tl-init > *:not(#tincture-loader){opacity:0;transform:translateY(14px)}
-  body.tl-ready > *:not(#tincture-loader){
-    opacity:1;transform:none;transition:opacity .9s ease, transform .9s ease;
-  }
+  body.tl-ready > *:not(#tincture-loader){opacity:1;transform:none;transition:opacity .9s ease, transform .9s ease;}
   body.tl-ready > *:nth-child(2){transition-delay:.05s}
   body.tl-ready > *:nth-child(3){transition-delay:.15s}
   body.tl-ready > *:nth-child(4){transition-delay:.25s}
   body.tl-ready > *:nth-child(5){transition-delay:.35s}
-  @media (prefers-reduced-motion:reduce){
-    body.tl-init > *:not(#tincture-loader){opacity:1;transform:none}
-    .tl-mark{animation:none;opacity:1}
-  }
+  @media (prefers-reduced-motion:reduce){body.tl-init > *:not(#tincture-loader){opacity:1;transform:none}.tl-mark{animation:none;opacity:1}}
 </style>
 <script>
   (function(){
@@ -365,11 +327,7 @@
     var el=document.getElementById('tincture-loader'),start=Date.now(),min=1400;
     function reveal(){
       var wait=Math.max(0,min-(Date.now()-start));
-      setTimeout(function(){
-        el.classList.add('tl-hide');
-        document.body.classList.add('tl-ready');
-        setTimeout(function(){el.style.display='none'},800);
-      },wait);
+      setTimeout(function(){el.classList.add('tl-hide');document.body.classList.add('tl-ready');setTimeout(function(){el.style.display='none'},800);},wait);
     }
     if(document.readyState==='complete')reveal();else window.addEventListener('load',reveal);
   })();
