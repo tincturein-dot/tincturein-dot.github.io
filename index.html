@@ -7,7 +7,7 @@
 <meta name="description" content="Garments drawn from 19th-century botanical illustration. Archival plates, printed on cloth.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IM+Fell+DW+Pica+SC&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root[data-theme="night"]{
     --bg:#0e0f0c;--panel:#16170f;--ink:#e9e4d4;--ink-dim:#9b9788;
@@ -23,7 +23,7 @@
   html{scroll-behavior:smooth}
   body{
     background:var(--bg);color:var(--ink);
-    font-family:'EB Garamond',Georgia,serif;font-size:19px;line-height:1.5;
+    font-family:'Jost',sans-serif;font-size:19px;line-height:1.5;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
     transition:background-color .6s ease,color .6s ease;
   }
@@ -32,10 +32,10 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     mix-blend-mode:overlay;
   }
-  .label{font-family:'IM Fell DW Pica SC',serif;font-size:14px;letter-spacing:.1em;color:var(--ink-dim)}
+  .label{font-family:'Jost',sans-serif;font-size:14px;letter-spacing:.1em;color:var(--ink-dim)}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1180px;margin:0 auto;padding:0 44px;position:relative;z-index:2}
-  .it{font-family:'IM Fell English',serif;font-style:italic;color:var(--accent)}
+  .it{font-family:'Jost',sans-serif;font-style:italic;color:var(--accent)}
   .divider{display:flex;align-items:center;justify-content:center;gap:18px;padding:6px 0}
   .divider .ln{height:1px;width:90px;background:var(--rule)}
   .divider svg{width:26px;height:26px;color:var(--accent);opacity:.8}
@@ -44,10 +44,10 @@
   header.scrolled{background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(16px)}
   nav{display:flex;align-items:center;justify-content:space-between;height:70px;transition:height .45s cubic-bezier(.2,.7,.2,1)}
   header.scrolled nav{height:52px}
-  .logo{font-family:'IM Fell English SC',serif;font-size:27px;letter-spacing:.04em;transition:font-size .45s cubic-bezier(.2,.7,.2,1)}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:27px;letter-spacing:.04em;transition:font-size .45s cubic-bezier(.2,.7,.2,1)}
   header.scrolled .logo{font-size:20px}
   .navmid{display:flex;gap:36px}
-  .navmid a{font-family:'IM Fell DW Pica SC',serif;font-size:15px;letter-spacing:.04em;color:var(--ink-dim);transition:color .25s,opacity .4s}
+  .navmid a{font-family:'Jost',sans-serif;font-size:15px;letter-spacing:.04em;color:var(--ink-dim);transition:color .25s,opacity .4s}
   .navmid a:hover{color:var(--ink);opacity:1}
   header.scrolled .navmid a{opacity:.66}
   .toggle{display:flex;align-items:center;border:1px solid var(--rule);border-radius:40px;padding:3px;cursor:pointer;background:transparent}
@@ -58,66 +58,66 @@
   .hero{padding:96px 0 76px;border-bottom:1px solid var(--line)}
   .hero-meta{display:flex;justify-content:space-between;margin-bottom:34px}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:68px;align-items:center}
-  .hero h1{font-family:'IM Fell English',serif;font-size:clamp(52px,7.4vw,98px);line-height:.96;font-weight:400;letter-spacing:-.01em}
+  .hero h1{font-family:'Jost',sans-serif;font-size:clamp(52px,7.4vw,98px);line-height:.96;font-weight:400;letter-spacing:-.01em}
   .hero-sub{margin-top:30px;font-size:22px;color:var(--ink-dim);max-width:31ch;line-height:1.48}
-  .hero-cta{margin-top:40px;display:inline-flex;align-items:center;gap:12px;padding:14px 28px;border:1px solid var(--rule);font-family:'IM Fell DW Pica SC',serif;font-size:15px;letter-spacing:.04em;color:var(--ink);transition:.3s}
+  .hero-cta{margin-top:40px;display:inline-flex;align-items:center;gap:12px;padding:14px 28px;border:1px solid var(--rule);font-family:'Jost',sans-serif;font-size:15px;letter-spacing:.04em;color:var(--ink);transition:.3s}
   .hero-cta:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
   .plate{position:relative;aspect-ratio:3/4;border:1px solid var(--line);background:repeating-linear-gradient(45deg,transparent,transparent 11px,var(--hatch) 11px,var(--hatch) 12px),var(--panel);display:flex;align-items:center;justify-content:center;text-align:center;transition:background-color .6s,border-color .6s;box-shadow:0 30px 60px -40px var(--glow)}
   .plate .ph{color:var(--ink-dim);padding:30px}
-  .plate .ph b{display:block;color:var(--ink);font-family:'IM Fell DW Pica SC',serif;font-size:17px;letter-spacing:.05em;margin-bottom:10px}
+  .plate .ph b{display:block;color:var(--ink);font-family:'Jost',sans-serif;font-size:17px;letter-spacing:.05em;margin-bottom:10px}
   .plate-tag{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;background:color-mix(in srgb,var(--bg) 55%,transparent)}
   .plate-tag .label{font-size:13px}
-  .plate-tag .sci{font-family:'IM Fell English',serif;font-style:italic;letter-spacing:0;font-size:15px}
+  .plate-tag .sci{font-family:'Jost',sans-serif;font-style:italic;letter-spacing:0;font-size:15px}
 
   .strip{border-bottom:1px solid var(--line);overflow:hidden;padding:15px 0}
   .marquee{display:flex;white-space:nowrap;animation:slide 42s linear infinite;width:max-content}
-  .marquee span{font-family:'IM Fell English',serif;font-style:italic;font-size:18px;letter-spacing:.02em;color:var(--ink-dim);padding:0 28px}
+  .marquee span{font-family:'Jost',sans-serif;font-style:italic;font-size:18px;letter-spacing:.02em;color:var(--ink-dim);padding:0 28px}
   .marquee span::after{content:"❧";margin-left:28px;color:var(--accent);font-style:normal}
   @keyframes slide{to{transform:translateX(-50%)}}
 
   .manifesto{padding:100px 0;border-bottom:1px solid var(--line)}
   .manifesto-grid{display:grid;grid-template-columns:200px 1fr;gap:62px}
   .manifesto .label{padding-top:14px}
-  .manifesto h2{font-family:'IM Fell English',serif;font-size:clamp(34px,4.6vw,56px);line-height:1.06;font-weight:400;max-width:17ch;letter-spacing:-.005em}
+  .manifesto h2{font-family:'Jost',sans-serif;font-size:clamp(34px,4.6vw,56px);line-height:1.06;font-weight:400;max-width:17ch;letter-spacing:-.005em}
   .manifesto p{margin-top:32px;font-size:21px;color:var(--ink-dim);max-width:54ch;line-height:1.55}
   .manifesto p+p{margin-top:18px}
 
   .specimens{padding:94px 0;border-bottom:1px solid var(--line)}
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:50px;border-bottom:1px solid var(--rule);padding-bottom:20px}
-  .sec-head h2{font-family:'IM Fell English',serif;font-size:38px;font-weight:400}
+  .sec-head h2{font-family:'Jost',sans-serif;font-size:38px;font-weight:400}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 32px;align-items:start}
   .card{background:transparent}
   .card:nth-child(2){margin-top:52px}
   .card .img{aspect-ratio:4/5;background:repeating-linear-gradient(45deg,transparent,transparent 11px,var(--hatch) 11px,var(--hatch) 12px),var(--panel);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:filter .5s,background-color .6s}
-  .card .img .ph{color:var(--ink-dim);font-family:'IM Fell DW Pica SC',serif;font-size:13px;letter-spacing:.05em;text-align:center;padding:20px}
+  .card .img .ph{color:var(--ink-dim);font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.05em;text-align:center;padding:20px}
   .card:hover .img{filter:brightness(1.06)}
-  .badge{position:absolute;top:15px;left:15px;font-family:'IM Fell DW Pica SC',serif;font-size:12px;letter-spacing:.08em;color:var(--accent);text-transform:lowercase}
+  .badge{position:absolute;top:15px;left:15px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.08em;color:var(--accent);text-transform:lowercase}
   .card .body{padding:22px 2px 0}
-  .card .latin{font-family:'IM Fell English',serif;font-style:italic;color:var(--ink-dim);font-size:17px;margin-bottom:4px}
-  .card .name{font-family:'IM Fell English',serif;font-size:28px;font-weight:400;line-height:1.08}
+  .card .latin{font-family:'Jost',sans-serif;font-style:italic;color:var(--ink-dim);font-size:17px;margin-bottom:4px}
+  .card .name{font-family:'Jost',sans-serif;font-size:28px;font-weight:400;line-height:1.08}
   .card .row{margin-top:16px;display:flex;align-items:center;justify-content:space-between}
   .card .price{font-size:23px}
-  .card .order{font-family:'IM Fell DW Pica SC',serif;font-size:14px;letter-spacing:.04em;color:var(--accent);border-bottom:1px solid transparent;transition:.2s}
+  .card .order{font-family:'Jost',sans-serif;font-size:14px;letter-spacing:.04em;color:var(--accent);border-bottom:1px solid transparent;transition:.2s}
   .card:hover .order{border-bottom-color:var(--accent)}
-  .card .prov{font-family:'IM Fell DW Pica SC',serif;font-size:13px;letter-spacing:.02em;color:var(--ink-dim);line-height:1.7;max-height:0;opacity:0;overflow:hidden;transition:max-height .55s cubic-bezier(.2,.7,.2,1),opacity .4s ease,margin .4s,padding .4s}
+  .card .prov{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.02em;color:var(--ink-dim);line-height:1.7;max-height:0;opacity:0;overflow:hidden;transition:max-height .55s cubic-bezier(.2,.7,.2,1),opacity .4s ease,margin .4s,padding .4s}
   @media(hover:hover){.card:hover .prov{max-height:140px;opacity:1;margin-top:15px;padding-top:13px;border-top:1px solid var(--line)}}
   @media(hover:none){.card .prov{max-height:none;opacity:1;margin-top:15px;padding-top:13px;border-top:1px solid var(--line)}}
 
   .note{padding:96px 0;border-bottom:1px solid var(--line)}
   .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:66px;align-items:center}
-  .note blockquote{font-family:'IM Fell English',serif;font-size:clamp(26px,3.4vw,40px);font-style:italic;line-height:1.28;font-weight:400}
+  .note blockquote{font-family:'Jost',sans-serif;font-size:clamp(26px,3.4vw,40px);font-style:italic;line-height:1.28;font-weight:400}
   .note cite{display:block;margin-top:24px;font-style:normal}
   .ledger{border:1px solid var(--line)}
   .ledger div{display:flex;justify-content:space-between;padding:17px 24px;border-bottom:1px solid var(--line)}
   .ledger div:last-child{border-bottom:none}
-  .ledger .k{font-family:'IM Fell DW Pica SC',serif;font-size:14px;letter-spacing:.03em;color:var(--ink-dim)}
-  .ledger .v{font-family:'IM Fell English',serif;font-size:18px;color:var(--ink)}
+  .ledger .k{font-family:'Jost',sans-serif;font-size:14px;letter-spacing:.03em;color:var(--ink-dim)}
+  .ledger .v{font-family:'Jost',sans-serif;font-size:18px;color:var(--ink)}
 
   footer{padding:94px 0 52px}
   .foot-top{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;padding-bottom:64px;border-bottom:1px solid var(--line)}
-  .foot-top h2{font-family:'IM Fell English',serif;font-size:clamp(30px,3.8vw,46px);font-weight:400;line-height:1.08}
+  .foot-top h2{font-family:'Jost',sans-serif;font-size:clamp(30px,3.8vw,46px);font-weight:400;line-height:1.08}
   .foot-top p{margin-top:20px;color:var(--ink-dim);max-width:36ch}
-  .ig{margin-top:32px;display:inline-flex;align-items:center;gap:12px;padding:15px 30px;background:var(--ink);color:var(--bg);font-family:'IM Fell DW Pica SC',serif;font-size:15px;letter-spacing:.04em;transition:.3s}
+  .ig{margin-top:32px;display:inline-flex;align-items:center;gap:12px;padding:15px 30px;background:var(--ink);color:var(--bg);font-family:'Jost',sans-serif;font-size:15px;letter-spacing:.04em;transition:.3s}
   .ig:hover{background:var(--accent)}
   .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:42px}
   .foot-bottom .label{font-size:13px}
@@ -136,6 +136,21 @@
     .grid{grid-template-columns:1fr;gap:44px}
     .card:nth-child(2){margin-top:0}
   }
+  /* — clean minimal typography — */
+  body{font-size:17px;letter-spacing:.015em;line-height:1.6}
+  .label{text-transform:uppercase}
+  .logo{text-transform:uppercase;letter-spacing:.2em;font-weight:500}
+  .navmid a{text-transform:uppercase;letter-spacing:.12em;font-size:12px}
+  .hero h1{text-transform:uppercase;letter-spacing:.03em;font-weight:300;line-height:1.06}
+  .hero-cta,.card .order,.ig{text-transform:uppercase;letter-spacing:.1em}
+  .it{font-style:normal}
+  .manifesto h2,.sec-head h2,.foot-top h2{text-transform:uppercase;letter-spacing:.05em;font-weight:400}
+  .note blockquote{text-transform:uppercase;font-style:normal;letter-spacing:.05em;font-weight:400;font-size:clamp(20px,2.8vw,30px);line-height:1.5}
+  .marquee span{font-style:normal;text-transform:uppercase;letter-spacing:.1em;font-size:13px}
+  .card .name{text-transform:uppercase;letter-spacing:.05em;font-size:19px}
+  .card .latin{font-style:italic;text-transform:none}
+  .badge{text-transform:uppercase;letter-spacing:.1em}
+  .plate-tag .sci{font-style:normal}
 </style>
 </head>
 <body>
@@ -316,7 +331,7 @@
   }
   #tincture-loader.tl-hide{opacity:0;pointer-events:none;}
   .tl-mark{
-    color:var(--ink,#e9e2cf);font-family:Georgia,'Times New Roman',serif;
+    color:var(--ink,#e9e2cf);font-family:'Cormorant Garamond',Georgia,serif;
     font-size:clamp(1.4rem,4vw,2.2rem);letter-spacing:.35em;
     text-transform:lowercase;padding-left:.35em;position:relative;opacity:0;
     animation:tl-fade 1.6s ease forwards, tl-pulse 2.4s ease-in-out .8s infinite;
