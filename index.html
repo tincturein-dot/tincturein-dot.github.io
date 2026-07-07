@@ -40,12 +40,16 @@
   .divider .ln{height:1px;width:90px;background:var(--rule)}
   .divider svg{width:26px;height:26px;color:var(--accent);opacity:.8}
 
-  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);transition:background-color .6s,border-color .6s}
-  nav{display:flex;align-items:center;justify-content:space-between;height:70px}
-  .logo{font-family:'IM Fell English SC',serif;font-size:27px;letter-spacing:.04em}
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);transition:background-color .5s,border-color .5s,backdrop-filter .5s}
+  header.scrolled{background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(16px)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:70px;transition:height .45s cubic-bezier(.2,.7,.2,1)}
+  header.scrolled nav{height:52px}
+  .logo{font-family:'IM Fell English SC',serif;font-size:27px;letter-spacing:.04em;transition:font-size .45s cubic-bezier(.2,.7,.2,1)}
+  header.scrolled .logo{font-size:20px}
   .navmid{display:flex;gap:36px}
-  .navmid a{font-family:'IM Fell DW Pica SC',serif;font-size:15px;letter-spacing:.04em;color:var(--ink-dim);transition:color .25s}
-  .navmid a:hover{color:var(--ink)}
+  .navmid a{font-family:'IM Fell DW Pica SC',serif;font-size:15px;letter-spacing:.04em;color:var(--ink-dim);transition:color .25s,opacity .4s}
+  .navmid a:hover{color:var(--ink);opacity:1}
+  header.scrolled .navmid a{opacity:.66}
   .toggle{display:flex;align-items:center;border:1px solid var(--rule);border-radius:40px;padding:3px;cursor:pointer;background:transparent}
   .toggle button{border:none;background:transparent;cursor:pointer;width:32px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:30px;color:var(--ink-dim);transition:.3s}
   .toggle button svg{width:15px;height:15px}
@@ -81,20 +85,23 @@
   .specimens{padding:94px 0;border-bottom:1px solid var(--line)}
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:50px;border-bottom:1px solid var(--rule);padding-bottom:20px}
   .sec-head h2{font-family:'IM Fell English',serif;font-size:38px;font-weight:400}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-  .card{background:var(--bg);transition:background-color .6s}
-  .card .img{aspect-ratio:4/5;border-bottom:1px solid var(--line);background:repeating-linear-gradient(45deg,transparent,transparent 11px,var(--hatch) 11px,var(--hatch) 12px),var(--panel);display:flex;align-items:center;justify-content:center;position:relative;transition:filter .5s,background-color .6s}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 32px;align-items:start}
+  .card{background:transparent}
+  .card:nth-child(2){margin-top:52px}
+  .card .img{aspect-ratio:4/5;background:repeating-linear-gradient(45deg,transparent,transparent 11px,var(--hatch) 11px,var(--hatch) 12px),var(--panel);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:filter .5s,background-color .6s}
   .card .img .ph{color:var(--ink-dim);font-family:'IM Fell DW Pica SC',serif;font-size:13px;letter-spacing:.05em;text-align:center;padding:20px}
-  .card:hover .img{filter:brightness(1.08)}
-  .badge{position:absolute;top:15px;left:15px;font-family:'IM Fell DW Pica SC',serif;font-size:12px;letter-spacing:.04em;color:var(--accent);border:1px solid var(--rule);padding:3px 9px}
-  .card .body{padding:24px 24px 28px}
-  .card .latin{font-family:'IM Fell English',serif;font-style:italic;color:var(--ink-dim);font-size:17px;margin-bottom:3px}
+  .card:hover .img{filter:brightness(1.06)}
+  .badge{position:absolute;top:15px;left:15px;font-family:'IM Fell DW Pica SC',serif;font-size:12px;letter-spacing:.08em;color:var(--accent);text-transform:lowercase}
+  .card .body{padding:22px 2px 0}
+  .card .latin{font-family:'IM Fell English',serif;font-style:italic;color:var(--ink-dim);font-size:17px;margin-bottom:4px}
   .card .name{font-family:'IM Fell English',serif;font-size:28px;font-weight:400;line-height:1.08}
-  .card .prov{margin-top:16px;font-family:'IM Fell DW Pica SC',serif;font-size:13px;letter-spacing:.02em;color:var(--ink-dim);line-height:1.7;border-top:1px solid var(--line);padding-top:13px}
-  .card .row{margin-top:18px;display:flex;align-items:center;justify-content:space-between}
+  .card .row{margin-top:16px;display:flex;align-items:center;justify-content:space-between}
   .card .price{font-size:23px}
   .card .order{font-family:'IM Fell DW Pica SC',serif;font-size:14px;letter-spacing:.04em;color:var(--accent);border-bottom:1px solid transparent;transition:.2s}
   .card:hover .order{border-bottom-color:var(--accent)}
+  .card .prov{font-family:'IM Fell DW Pica SC',serif;font-size:13px;letter-spacing:.02em;color:var(--ink-dim);line-height:1.7;max-height:0;opacity:0;overflow:hidden;transition:max-height .55s cubic-bezier(.2,.7,.2,1),opacity .4s ease,margin .4s,padding .4s}
+  @media(hover:hover){.card:hover .prov{max-height:140px;opacity:1;margin-top:15px;padding-top:13px;border-top:1px solid var(--line)}}
+  @media(hover:none){.card .prov{max-height:none;opacity:1;margin-top:15px;padding-top:13px;border-top:1px solid var(--line)}}
 
   .note{padding:96px 0;border-bottom:1px solid var(--line)}
   .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:66px;align-items:center}
@@ -126,7 +133,8 @@
     .navmid{display:none}
     .hero-grid,.manifesto-grid,.note-grid,.foot-top{grid-template-columns:1fr;gap:42px}
     .manifesto-grid{gap:26px}
-    .grid{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr;gap:44px}
+    .card:nth-child(2){margin-top:0}
   }
 </style>
 </head>
@@ -139,6 +147,7 @@
       <div class="navmid">
         <a href="#specimens">specimens</a>
         <a href="#provenance">provenance</a>
+        <a href="poison-garden.html">the poison garden</a>
         <a href="#order">order</a>
       </div>
       <div class="toggle" id="toggle" role="button" aria-label="Toggle day or night">
@@ -207,8 +216,8 @@
         <div class="body">
           <div class="latin">Atropa belladonna</div>
           <div class="name">Belladonna Tee</div>
-          <div class="prov">source — köhler's<br>medizinal-pflanzen, 1887<br>240 gsm · combed cotton</div>
           <div class="row"><span class="price">₹1,490</span><a href="#order" class="order">order →</a></div>
+          <div class="prov">source — köhler's<br>medizinal-pflanzen, 1887<br>240 gsm · combed cotton</div>
         </div>
       </article>
       <article class="card">
@@ -216,8 +225,8 @@
         <div class="body">
           <div class="latin">Conium maculatum</div>
           <div class="name">Hemlock Oversized</div>
-          <div class="prov">source — köhler's<br>medizinal-pflanzen, 1887<br>240 gsm · oversized cut</div>
           <div class="row"><span class="price">₹1,690</span><a href="#order" class="order">order →</a></div>
+          <div class="prov">source — köhler's<br>medizinal-pflanzen, 1887<br>240 gsm · oversized cut</div>
         </div>
       </article>
       <article class="card">
@@ -225,8 +234,8 @@
         <div class="body">
           <div class="latin">Digitalis purpurea</div>
           <div class="name">Foxglove Drop Tee</div>
-          <div class="prov">source — biodiversity<br>heritage library<br>180 gsm · relaxed fit</div>
           <div class="row"><span class="price">₹1,590</span><a href="#order" class="order">order →</a></div>
+          <div class="prov">source — biodiversity<br>heritage library<br>180 gsm · relaxed fit</div>
         </div>
       </article>
     </div>
@@ -285,6 +294,15 @@
       root.setAttribute('data-theme',next);
       try{localStorage.setItem('tincture-theme',next);}catch(e){}
     });
+  })();
+  (function(){
+    var h=document.querySelector('header'); if(!h) return;
+    var on=false;
+    function upd(){
+      var s=window.scrollY>24;
+      if(s!==on){on=s;h.classList.toggle('scrolled',s);}
+    }
+    window.addEventListener('scroll',upd,{passive:true}); upd();
   })();
 </script>
 <!-- tincture loader + entrance — paste directly after the <body> tag -->
