@@ -156,6 +156,7 @@
   .card .latin{font-style:italic;text-transform:none;font-size:13px}
   .marquee span{font-style:normal;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
   .note-quote{max-width:640px;margin:0 auto;text-align:center}
+  button.order{background:none;border:none;border-bottom:1px solid transparent;padding:0;cursor:pointer}
 </style>
 </head>
 <body>
@@ -234,7 +235,7 @@
         <div class="body">
           <div class="latin">Atropa belladonna</div>
           <div class="name">Belladonna Tee</div>
-          <div class="row"><span class="price">₹1,490</span><a href="#order" class="order">order →</a></div>
+          <div class="row"><span class="price">₹1,490</span><button class="order" onclick="buy('belladonna')">order →</button></div>
         </div>
       </article>
       <article class="card">
@@ -242,7 +243,7 @@
         <div class="body">
           <div class="latin">Conium maculatum</div>
           <div class="name">Hemlock Oversized</div>
-          <div class="row"><span class="price">₹1,690</span><a href="#order" class="order">order →</a></div>
+          <div class="row"><span class="price">₹1,690</span><button class="order" onclick="buy('hemlock')">order →</button></div>
         </div>
       </article>
       <article class="card">
@@ -250,7 +251,7 @@
         <div class="body">
           <div class="latin">Digitalis purpurea</div>
           <div class="name">Foxglove Drop Tee</div>
-          <div class="row"><span class="price">₹1,590</span><a href="#order" class="order">order →</a></div>
+          <div class="row"><span class="price">₹1,590</span><button class="order" onclick="buy('foxglove')">order →</button></div>
         </div>
       </article>
     </div>
@@ -337,6 +338,25 @@
     }
     if(document.readyState==='complete')reveal();else window.addEventListener('load',reveal);
   })();
+</script>
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+<script>
+  const BACKEND = "https://tincture-backend.onrender.com";
+  async function buy(productId){
+    const phone = prompt("Phone number for your order:");
+    if(!phone) return;
+    try{
+      const r = await fetch(BACKEND + "/create-order", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({ productId, customer:{ phone } })
+      });
+      const d = await r.json();
+      if(!d.payment_session_id){ alert("Couldn't start checkout. Please try again."); return; }
+      const cashfree = Cashfree({ mode: "sandbox" });
+      cashfree.checkout({ paymentSessionId: d.payment_session_id, redirectTarget: "_self" });
+    }catch(e){ alert("Something went wrong starting checkout."); }
+  }
 </script>
 
 </body>
