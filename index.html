@@ -65,6 +65,12 @@
   .plate{position:relative;aspect-ratio:3/4;border:1px solid var(--line);background:repeating-linear-gradient(45deg,transparent,transparent 11px,var(--hatch) 11px,var(--hatch) 12px),var(--panel);display:flex;align-items:center;justify-content:center;text-align:center;transition:background-color .6s,border-color .6s;box-shadow:0 30px 60px -40px var(--glow)}
   .plate .ph{color:var(--ink-dim);padding:30px}
   .plate .ph b{display:block;color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:17px;letter-spacing:.05em;margin-bottom:10px}
+  .plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .swatches{display:flex;gap:9px;margin-top:14px}
+  .sw{width:15px;height:15px;border-radius:50%;border:1px solid var(--rule);cursor:pointer;padding:0}
+  .sw-black{background:#141414}
+  .sw-white{background:#efe9da}
+  .sw.is-active{box-shadow:0 0 0 2px var(--bg),0 0 0 3px var(--accent)}
   .plate-tag{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;background:color-mix(in srgb,var(--bg) 55%,transparent)}
   .plate-tag .label{font-size:13px}
   .plate-tag .sci{font-family:'IBM Plex Mono',monospace;font-style:italic;letter-spacing:0;font-size:15px}
@@ -190,10 +196,10 @@
         <a href="#specimens" class="hero-cta reveal d4">view the specimens →</a>
       </div>
       <div class="plate reveal d3">
-        <div class="ph"><b>hero plate</b>drop image here · 3:4 portrait</div>
+        <img src="belladonnablack.png" alt="Belladonna Tee — botanical print on black cotton">
         <div class="plate-tag">
           <span class="label">fig. 001</span>
-          <span class="label sci">Digitalis purpurea</span>
+          <span class="label sci">Atropa belladonna</span>
         </div>
       </div>
     </div>
@@ -234,6 +240,10 @@
           <div class="latin">Atropa belladonna</div>
           <div class="name">Belladonna Tee</div>
           <div class="row"><span class="price">₹1,490</span><button class="order" onclick="buy('belladonna')">order →</button></div>
+          <div class="swatches">
+            <button class="sw sw-black is-active" onclick="setColor(this,'belladonnablack.png')" aria-label="Black"></button>
+            <button class="sw sw-white" onclick="setColor(this,'belladonnawhite.png')" aria-label="White"></button>
+          </div>
         </div>
       </article>
       <article class="card">
@@ -242,6 +252,10 @@
           <div class="latin">Conium maculatum</div>
           <div class="name">Hemlock Oversized</div>
           <div class="row"><span class="price">₹1,690</span><button class="order" onclick="buy('hemlock')">order →</button></div>
+          <div class="swatches">
+            <button class="sw sw-black is-active" onclick="setColor(this,'hemlockblack.png')" aria-label="Black"></button>
+            <button class="sw sw-white" onclick="setColor(this,'hemlockwhite.png')" aria-label="White"></button>
+          </div>
         </div>
       </article>
       <article class="card">
@@ -250,6 +264,10 @@
           <div class="latin">Digitalis purpurea</div>
           <div class="name">Foxglove Drop Tee</div>
           <div class="row"><span class="price">₹1,590</span><button class="order" onclick="buy('foxglove')">order →</button></div>
+          <div class="swatches">
+            <button class="sw sw-black is-active" onclick="setColor(this,'foxgloveblack.png')" aria-label="Black"></button>
+            <button class="sw sw-white" onclick="setColor(this,'foxglovewhite.png')" aria-label="White"></button>
+          </div>
         </div>
       </article>
     </div>
@@ -308,6 +326,13 @@
     }
     window.addEventListener('scroll',upd,{passive:true}); upd();
   })();
+  function setColor(btn,file){
+    var card=btn.closest('.card');
+    var img=card.querySelector('.img img');
+    if(img){img.src=file;img.style.display='';}
+    card.querySelectorAll('.sw').forEach(function(s){s.classList.remove('is-active');});
+    btn.classList.add('is-active');
+  }
 </script>
 <div id="tincture-loader"><div class="tl-mark">tincture</div></div>
 <style>
